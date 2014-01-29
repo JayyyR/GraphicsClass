@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/f85/jracosta/427/HW1/bin/test.cpp
+iostream
+-
+vec3d.h
+/home/f85/jracosta/427/HW1/bin/vec3d.h
+
+/home/f85/jracosta/427/HW1/src/vec3d.cpp
+cassert
+-
+vec3d.h
+/home/f85/jracosta/427/HW1/src/vec3d.h
+
+include/vec3d.h
+ostream
+-
+cmath
+-
+

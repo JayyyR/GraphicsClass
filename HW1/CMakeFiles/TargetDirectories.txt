@@ -1,0 +1,2 @@
+/home/f85/jracosta/427/HW1/CMakeFiles/hw1.dir
+/home/f85/jracosta/427/HW1/CMakeFiles/test.dir
