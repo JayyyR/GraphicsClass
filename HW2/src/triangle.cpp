@@ -206,25 +206,21 @@ bool triangle::_planeIntersection(const ray& r, float& t) const
   //      Computes the parameter t at which the ray r intersects the plane determined by the triangle
   //      Modifies: parameter t (hence, passed by reference)
   //      Returns: true if the plane is hit.  The value of t is set to the computed ray parameter
-  //std::cout << "ray origin is: " << r.origin() <<  std::endl;
-  //more than one normal?
-  //what is d
+
   //calculate normal
   vec3d norm = normal();
-  //std::cout << "norm is: " << norm <<  std::endl;
- // std::cout << "vertex 0 is " << _vertex[0]<<std::endl;
- // std::cout << "vertex 1 is " << _vertex[1]<<std::endl;
-  //std::cout << "vertex 2 is " << _vertex[2]<<std::endl;
+  
+  //calculate distance
   float d = (_vertex[0].dot(norm));
   d= d*-1;
   
-  //std::cout << "d is: " << d<<  std::endl;
+  //calculate t 
   t = -(r.origin().dot(norm) + d) / (r.direction().dot(norm));
   if (t >= 0){
-   // std::cout<< "return true, t is: " << t << std::endl;
     return true;
   }
-  // std::cout<< "return false, t is: " << t << std::endl;
+
+  //return false if t is less than 0
   return false;
 }
 
@@ -235,27 +231,20 @@ vec3d triangle::_barycentricCoord(const ray& r, float t) const
   //      Computes the barycentric coordinates of the point on the ray at parameter t
   //      Modifies: nothing
   //      Returns: a 3D vector containing the barycentric coordinates (alpha, beta, gamma)
-  //std::cout<<"t is: " << t <<std::endl;
+
   vec3d q = r(t);
-  //std::cout<<"vertex 0: " << _vertex[0] << std::endl;
-  // std::cout<<"vertex 1: " << _vertex[1] << std::endl;
-  //  std::cout<<"vertex 2: " << _vertex[2] << std::endl;
+
   vec3d n = (_vertex[1]-_vertex[0]).cross((_vertex[2]-_vertex[0]));
-  //float area = (.5*((_vertex[1]-_vertex[0]).cross(_vertex[2]-_vertex[0]))).dot(n);
-  //std::cout<<"area is: " << area << std::endl;
+
   float A1 = (.5*((_vertex[1] - q ).cross((_vertex[2] - q )))).dot(n); 
   float A2 = (.5*((_vertex[2] - q ).cross((_vertex[0] - q )))).dot(n); 
   float A3 = (.5*((_vertex[0] - q ).cross((_vertex[1] - q )))).dot(n); 
-  
-  //std::cout<<"A1 is: " << A1 << std::endl;
-  //std::cout<<"A2 is: " << A2 << std::endl;
-  //std::cout<<"A3 is: " << A3 << std::endl;
+
   float sum = A1+A2+A3;
   
   float alpha = A1/sum;
   float beta = A2/sum;
   float gamma = A3/sum;
   
-  //std::cout<<"alpha+beta+gamma: " << alpha+beta+gamma << std::endl;
   return vec3d(alpha, beta, gamma);
 }
