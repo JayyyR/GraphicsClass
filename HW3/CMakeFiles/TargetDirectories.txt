@@ -1,0 +1,5 @@
+/home/f85/jracosta/427/HW3/CMakeFiles/hw1.dir
+/home/f85/jracosta/427/HW3/CMakeFiles/hw2.dir
+/home/f85/jracosta/427/HW3/CMakeFiles/hw3.dir
+/home/f85/jracosta/427/HW3/CMakeFiles/imagediff.dir
+/home/f85/jracosta/427/HW3/CMakeFiles/test.dir
