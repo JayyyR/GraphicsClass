@@ -1,4 +1,9 @@
 #include "diffuse.h"
+#include "constants.h"
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
 
 /////////////////
 // Constructor //
@@ -38,7 +43,12 @@ float diffuse::evaluate(const vec3d& in, const vec3d& normal, const vec3d& /*out
   //             out = view direction
   //      Modifies: nothing
   //      Returns: evaluation of the diffuse (Lambertian) brdf.
-  return 1.0f;
+  
+  float answer = (normal.dot(in));
+  //cout<<"answer: " << answer << endl;
+  
+  return answer;   
+
 }
 
 

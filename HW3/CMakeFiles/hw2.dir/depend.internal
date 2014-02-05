@@ -40,6 +40,7 @@ CMakeFiles/hw2.dir/src/constantAlbedo.cpp.o
 CMakeFiles/hw2.dir/src/diffuse.cpp.o
  /home/f85/jracosta/427/HW3/src/diffuse.cpp
  include/brdf_base.h
+ include/constants.h
  include/diffuse.h
  include/vec3d.h
 CMakeFiles/hw2.dir/src/directionalLightsource.cpp.o

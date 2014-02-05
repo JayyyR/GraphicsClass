@@ -33,6 +33,7 @@ CMakeFiles/imagediff.dir/src/constantAlbedo.cpp.o: include/vec2d.h
 
 CMakeFiles/imagediff.dir/src/diffuse.cpp.o: src/diffuse.cpp
 CMakeFiles/imagediff.dir/src/diffuse.cpp.o: include/brdf_base.h
+CMakeFiles/imagediff.dir/src/diffuse.cpp.o: include/constants.h
 CMakeFiles/imagediff.dir/src/diffuse.cpp.o: include/diffuse.h
 CMakeFiles/imagediff.dir/src/diffuse.cpp.o: include/vec3d.h
 

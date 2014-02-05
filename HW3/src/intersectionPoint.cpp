@@ -199,7 +199,8 @@ color intersectionPoint::evaluate(const lightsource_base& ls) const
   //      Input: a light source.  You can assume the light source is NOT blocked at the intersection point
   //      Modifies: nothing
   //      Returns: computes color that is the effect of the light source (ls) on the material (_material)
-  color co = _material.evaluate( ls.getDirection(_point), _normal, _point , _textureCoord );
+  color co = _material.evaluate( ls.getDirection(_point)*-1, _normal, -1*(_point) , _textureCoord );
+    
  // cout<< "ls: " << ls << endl;
   return co;
 }

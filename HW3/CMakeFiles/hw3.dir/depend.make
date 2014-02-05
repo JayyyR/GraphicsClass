@@ -53,6 +53,7 @@ CMakeFiles/hw3.dir/src/constantAlbedo.cpp.o: include/vec2d.h
 
 CMakeFiles/hw3.dir/src/diffuse.cpp.o: src/diffuse.cpp
 CMakeFiles/hw3.dir/src/diffuse.cpp.o: include/brdf_base.h
+CMakeFiles/hw3.dir/src/diffuse.cpp.o: include/constants.h
 CMakeFiles/hw3.dir/src/diffuse.cpp.o: include/diffuse.h
 CMakeFiles/hw3.dir/src/diffuse.cpp.o: include/vec3d.h
 

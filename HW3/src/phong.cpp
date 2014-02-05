@@ -1,5 +1,9 @@
 #include "phong.h"
+#include <math.h>
+#include <iostream>
+#include <cstdlib>
 
+using namespace std;
 /////////////////
 // Constructor //
 /////////////////
@@ -38,7 +42,16 @@ float phong::evaluate(const vec3d& in, const vec3d& normal, const vec3d& out) co
   //             out = view direction
   //      Modifies: nothing
   //      Returns: evaluation of the phong brdf.
-  return 0.0f;
+
+  vec3d R = 2*(normal.dot(in))*normal - in;
+  float answer = out.dot(R);
+  float theAns = pow (answer, _sharpness);
+  /*if(theAns<0){
+    cout<<"returning: 0"<<endl;
+    return 0.0f;
+  }*/
+ // cout<<"returning theAns: "<<theAns<<endl;
+  return theAns;
 }
 
 
