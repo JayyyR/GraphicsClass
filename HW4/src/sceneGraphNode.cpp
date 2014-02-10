@@ -121,7 +121,7 @@
     
     
     //transform intersection point back
-    ip.inverseTransform(_transformation);
+    ip.transform(_transformation);
     return ip;
   }
   
