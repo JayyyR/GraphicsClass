@@ -19,7 +19,9 @@ scale3d::scale3d(float uniformScale) : transformation3d()
   _transformation(1,1) = uniformScale;
   _transformation(2,2) = uniformScale;
   
-  _inverseTransformation = _transformation.transpose();
+  _inverseTransformation(0,0) = 1/uniformScale;
+  _inverseTransformation(1,1) = 1/uniformScale;
+  _inverseTransformation(2,2) = 1/uniformScale;
 }
 
 
@@ -29,11 +31,17 @@ scale3d::scale3d(float scaleX, float scaleY, float scaleZ) : transformation3d()
   //      returns: nothing
   //      modifies: sets the member variables (defined in transformation3d), such that it represents a non-uniform cale
   
+  //reverse?
+  
   _transformation(0,0) = scaleX;
   _transformation(1,1) = scaleY;
   _transformation(2,2) = scaleZ;
   
-  _inverseTransformation = _transformation.transpose();
+  
+  //do inverse transformation
+  _inverseTransformation(0,0) = 1/scaleX;
+  _inverseTransformation(1,1) = 1/scaleY;
+  _inverseTransformation(2,2) = 1/scaleZ;
 }
 
 scale3d::scale3d(const scale3d& s) : transformation3d(s)

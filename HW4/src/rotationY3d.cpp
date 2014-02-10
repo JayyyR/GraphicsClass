@@ -21,7 +21,7 @@ rotationY3d::rotationY3d(float angle) : transformation3d()
   _transformation(0,0) = c;
   _transformation(0,2) = s;
   _transformation(2,0) = -s;
-  _transformation(2,2) = -c;
+  _transformation(2,2) = c;
   
   _inverseTransformation = _transformation.transpose();
   
