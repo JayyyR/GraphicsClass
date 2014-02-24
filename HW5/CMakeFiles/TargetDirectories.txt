@@ -1,0 +1,7 @@
+/home/f85/jracosta/427/HW5/CMakeFiles/hw1.dir
+/home/f85/jracosta/427/HW5/CMakeFiles/hw2.dir
+/home/f85/jracosta/427/HW5/CMakeFiles/hw3.dir
+/home/f85/jracosta/427/HW5/CMakeFiles/hw4.dir
+/home/f85/jracosta/427/HW5/CMakeFiles/hw5.dir
+/home/f85/jracosta/427/HW5/CMakeFiles/imagediff.dir
+/home/f85/jracosta/427/HW5/CMakeFiles/test.dir
