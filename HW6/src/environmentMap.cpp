@@ -52,34 +52,18 @@ color environmentMap::evaluate(const ray& r) const
   if(thetaPhi.u < 0.0f) thetaPhi.u += (2.0f * M_PI);
   thetaPhi /= vec2d(2.0f * M_PI, M_PI);
   
-  //bilinearly interpolate thetaphi?
-  
+  //bilinearly interpolate thetaphi
   double x = thetaPhi.u * (_texture.width()-1);
   double y = thetaPhi.v*(_texture.height()-1);
   
-  //std::cout << "texture coords: "<< x<< ", " << y<< std::endl;
- // std::cout << "texture width height: "<< _texture.width()<< " " << _texture.height()<< std::endl;
-  
-  //if(x < 0) x = 0.0f;
- // else if(x > _texture.width() - 1) x = _texture.width() - 1;
-
 
   double x1 = floor(x);
-  //std::cout << "x1: " << x1<< std::endl;
   double x2= x1+1;
-  //std::cout << "x2: " << x2<< std::endl;
   double y1 = floor(y);
-  //std::cout << "y1: "<< y1<< std::endl;
   double y2 = y1+1;
- // std::cout << "y2: "<< y2<< std::endl;
   double dx = x - x1;
   double dy = y - y1;
-  //std::cout << "dx dy: "<< dx<< " " << dy<< std::endl;
-  
-  
 
-  ///dunnno???
-  
   if(x1 < 0) {
     x1 = 0.0f;
   }
@@ -91,7 +75,6 @@ color environmentMap::evaluate(const ray& r) const
   }
   else if(x2 > _texture.width() - 1) {
     x2 = _texture.width() - 1;
-    
   }
   if(y1 < 0) {
     y1 = 0.0f;
@@ -105,9 +88,7 @@ color environmentMap::evaluate(const ray& r) const
   else if(y2 > _texture.width() - 1){ 
     y2 = _texture.width() - 1;
   }
-  
-  ///////
-  
+
   color a = _texture(x1,y1) * (1-dx) + _texture(x2,y1)*dx;
   color b = _texture(x1,y2) * (1-dx) + _texture(x2,y2)*dx;
   color result = a*(1-dy) + b*dy;

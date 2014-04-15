@@ -49,13 +49,8 @@ color pointLightsource::getIntensity(const vec3d& point, const vec3d& /*dir*/) c
   //               linear with distance attenuations, and the 3th component is the scale of the distance
   //               squared attenuation. 
   //      modifies: nothing
-  
-  //distnace between position and point = distane?
-  //L1 is intensity?
-  //attenuation vecs
-  
+
   float distance = _position.distance(point);
-  //std::cout << "distance: " << distance<< std::endl;
   float attenConstant = _attenuation[0];
   float attenLinear = _attenuation[1];
   float attenExp = _attenuation[2];

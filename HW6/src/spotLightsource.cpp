@@ -65,21 +65,13 @@ color spotLightsource::getIntensity(const vec3d& point, const vec3d& dir) const
   float attenConstant = _attenuation[0];
   float attenLinear = _attenuation[1];
   float attenExp = _attenuation[2];
-  
-  //std::cout<<"direction is: "<<_direction<<std::endl;
-  //std::cout<<"dir is: "<<dir<<std::endl;
   float dotProd = (_direction).dot(dir);
- // std::cout<< "dot prod is: " << dotProd << std::endl;
- // std::cout<< "cutoff is: " << _cutoff << std::endl;
   color result = color(0.0f, 0.0f, 0.0f);
   
   if (dotProd > _cutoff){
     result = (_intensity* pow(dotProd,_sharpness) )/ ( attenConstant + (attenLinear*dist) + (attenExp * (dist*dist)));
   }
-  //else
-    //std::cout<<"result is zero"<<std::endl;
-  
-  //std::cout<<"result is: " << result<< std::endl;
+
   return result;
 }
 
