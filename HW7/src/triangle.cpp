@@ -1,5 +1,8 @@
 #include <cassert>
 #include <algorithm>
+  #include <cstdio>
+  #include <cstdlib>
+  #include <iostream>
 
 #include "triangle.h"
 #include "constants.h"
@@ -54,8 +57,12 @@ const vec3d& triangle::vertex(size_t index) const
 
 vec3d triangle::normal(void) const
 {
+  //std::cout<<"in normal"<<std::endl;
+  
+  //std::cout<<"vertex: " << _vertex[1] <<std::endl;
   vec3d edge1 = _vertex[1] - _vertex[0];
   vec3d edge2 = _vertex[2] - _vertex[0];
+  //std::cout<<"after getting edges"<<std::endl;
   vec3d normal = edge1.cross(edge2);
   return normal.normalize();
 }
@@ -128,9 +135,11 @@ triangle triangle::operator=(const triangle& t)
 /////////////
 bool triangle::intersect(const ray& r, vec3d& barycentricCoord, float& t) const
 {
+  //std::cout<<"in intersect triangle"<<std::endl;
   // intersect plane in which the triangle resides
   bool hit = _planeIntersection(r, t);
 
+  //std::cout<<"after hit check"<<std::endl;
   // check if hit
   if(!hit) return false;
 
@@ -201,9 +210,11 @@ void triangle::_assign(const triangle& t)
 
 bool triangle::_planeIntersection(const ray& r, float& t) const
 {
+ // std::cout<<"in plane intersect"<<std::endl;
   // get plane normal
   vec3d n = normal();
 
+  //std::cout<<"after normal"<<std::endl;
   // check if ray parallel to plane
   float VN = n.dot( r.direction() );
   if(fabs(VN) < EPSILON) return false;
