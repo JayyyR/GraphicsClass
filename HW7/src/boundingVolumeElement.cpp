@@ -63,26 +63,35 @@
     float randCentroid = centroidList[pivotNum].theCentroid;
     std::cout<<"rand centroid is: "<< randCentroid << std::endl;
     
+    /*
+    //move pivot to end
+    centroidItem temp;
+    temp.theCentroid = centroidList[centroidListSize-1].theCentroid;
+    temp.tri = centroidList[centroidListSize-1].tri;
+    centroidList[centroidListSize-1] = centroidList[pivotNum];
+    centroidList[pivotNum] = temp;*/
+	
+    
     //partition the centroid list
     int i = 0;
     std::cout<<"centroid list size is: "<< centroidListSize <<std::endl;
     int j = centroidListSize-1;
     
      std::cout<<"BEFORE i is: " << i << " j is: " << j<<std::endl;
-    while (i<=j){
+    while (i<j){
      // std::cout<<"i is: "<< i<< std::endl;
      // std::cout<<"j is: " <<j<<std::endl;
-      while (centroidList[i].theCentroid < randCentroid){
+      while (centroidList[i].theCentroid <= randCentroid && i<j){
 	std::cout<<"increasing i...the centroid is: " << centroidList[i].theCentroid << std::endl;
 	i++;
       }
-      while (centroidList[j].theCentroid > randCentroid){
+      while (centroidList[j].theCentroid > randCentroid && i<j){
 	std::cout<<"decreasing j...the centroid is: " << centroidList[j].theCentroid << std::endl;
 	j--;
       }
       std::cout<<"i is: " << i << " j is: " << j<<std::endl;
       
-      // if the values are equal increase i or decrease j depending on where the pivot is located
+      /*// if the values are equal increase i or decrease j depending on where the pivot is located
       if (centroidList[i].theCentroid == centroidList[j].theCentroid){
 	if (i==pivotNum){
 	  std::cout<<"they were the same, decreasing j"<< std::endl;
@@ -92,8 +101,9 @@
 	  std::cout<<"they were the same, increasing i"<< std::endl;
 	  i++;
 	}  
-      }
-      else if (i<=j){
+      }*/
+      /*else */
+      //if (i<=j){
 	//swap the items
 	centroidItem tempItem;
 	tempItem.theCentroid = centroidList[i].theCentroid;
@@ -101,7 +111,7 @@
 	centroidList[i] = centroidList[j];
 	centroidList[j] = tempItem;
 	
-	//change pivotnum
+	/*//change pivotnum
 	if (i==pivotNum){
 	  std::cout<<"pivotNum is changing from" << i << "to" << j <<std::endl;
 	  pivotNum=j;
@@ -109,12 +119,23 @@
 	else if (j==pivotNum){
 	  std::cout<<"pivotNum is changing from" << j << "to" << i <<std::endl;
 	  pivotNum=i;
-	}
+	}*/
 	
 	//i++;
 	//j--;
-      }
+      //}
+      
+      
     }
+    
+    /*std::cout<<"moving pivot back to j+1: " << j+1  <<std::endl;
+    //swap pivot back to j
+    centroidItem temp2;
+    temp2.theCentroid = centroidList[j+1].theCentroid;
+    temp2.tri = centroidList[j+1].tri;
+    centroidList[j+1] = centroidList[centroidListSize-1];
+    centroidList[centroidListSize-1] = temp2;
+    pivotNum=j+1;*/
     
     //pivotnum is where the pivot is currently located in the centroid list
    // std::cout<<"pivotNum is: " <<pivotNum<<std::endl;
@@ -124,9 +145,10 @@
       //std::cout<<"centroid tri: " << centroidList[i].tri->vertex(0) << std::endl;
     }
     
-    std::cout<<"pivotNum after is "<< pivotNum <<std::endl;
+    //std::cout<<"pivotNum after is "<< pivotNum <<std::endl;
     //find midpoint by adjusting pivotnum for the start and end indicies
-    int midpoint = start_index+pivotNum;
+    std::cout<<"CHECKING I and J when finding MIDPOINT i is: " << i << " j is: " << j<<std::endl;
+    int midpoint = start_index+j;
     std::cout<<"midpoint is: " <<midpoint<<std::endl;
     
         
@@ -154,12 +176,12 @@
     //check if we are out of bounds
     //if (start_index <= midpoint){
       std::cout<<"GOING LEFT"<<std::endl;
-      _left = new boundingVolumeElement(triangleList, start_index, midpoint);
+      _left = new boundingVolumeElement(triangleList, start_index, midpoint-1);
     //}
     //check if we are out of bounds
     //if (end_index >= midpoint+1){
       std::cout<<"GOING RIGHT"<<std::endl;
-      _right = new boundingVolumeElement(triangleList, midpoint+1, end_index);
+      _right = new boundingVolumeElement(triangleList, midpoint, end_index);
     //}
     // Homework 7: This is the constructor that will create the bounding volume hierarchy. This hierarchy will be in the form of a binary tree, where each bounding
     //             volume element refers to zero, one or two child elements. As input you get a list of (pointers to) triangles, and a start and end index

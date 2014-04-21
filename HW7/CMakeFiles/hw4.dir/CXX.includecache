@@ -20,22 +20,6 @@ cstdlib
 iostream
 -
 
-/home/f85/jracosta/427/HW7/src/triangle.cpp
-cassert
--
-algorithm
--
-cstdio
--
-cstdlib
--
-iostream
--
-triangle.h
-/home/f85/jracosta/427/HW7/src/triangle.h
-constants.h
-/home/f85/jracosta/427/HW7/src/constants.h
-
 include/albedo_base.h
 ostream
 -
